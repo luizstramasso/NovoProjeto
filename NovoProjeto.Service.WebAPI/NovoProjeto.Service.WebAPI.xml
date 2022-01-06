@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NovoProjeto.Service.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:NovoProjeto.Service.WebAPI.Controllers.AcoesInvestimentoController.ListarCotacoes">
+            <summary>
+            Consulta uma lista de ações disponíveis para investimento
+            </summary>
+        </member>
+    </members>
+</doc>
