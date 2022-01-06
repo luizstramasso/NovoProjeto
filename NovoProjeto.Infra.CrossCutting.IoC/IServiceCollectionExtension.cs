@@ -4,12 +4,12 @@ using NovoProjeto.Application.AutoMapper;
 using NovoProjeto.Application.Interfaces;
 using NovoProjeto.Application.Services;
 using NovoProjeto.Domain.Interface.Repository;
-using NovoProjeto.Domain.Interface.Service;
+using NovoProjeto.Domain.Interface.Service.RequestService;
 using NovoProjeto.Domain.Models;
 using NovoProjeto.Infra.CrossCutting.Util.ViewEntity;
 using NovoProjeto.Infra.Data.Context;
 using NovoProjeto.Infra.Data.Repository;
-using NovoProjeto.Infra.Service.Service;
+using NovoProjeto.Infra.Service.RequestService;
 using System;
 
 namespace NovoProjeto.Infra.CrossCutting.IoC
@@ -29,7 +29,7 @@ namespace NovoProjeto.Infra.CrossCutting.IoC
 
             // Infra - Service
             services.AddHttpClient();
-            services.AddScoped<IFinanceInfraService, FinanceInfraService>();
+            services.AddScoped<IFinanceRequestService, FinanceRequestService>();
 
             // Infra - Data
             services
