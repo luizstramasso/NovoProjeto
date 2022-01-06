@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace NovoProjeto.Infra.CrossCutting.Util.HelpEntity
 {
-    public class ResponseYahooEntity
+    public class ResponseYahooHelpEntity
     {
         [JsonProperty( "quoteResponse" )]
         public QuoteResponse QuoteResponse { get; set; }
@@ -32,5 +32,8 @@ namespace NovoProjeto.Infra.CrossCutting.Util.HelpEntity
 
         [JsonProperty( "error" )]
         public object Error { get; set; }
+
+
+        public bool TemErro() => Error == null;
     }
 }
