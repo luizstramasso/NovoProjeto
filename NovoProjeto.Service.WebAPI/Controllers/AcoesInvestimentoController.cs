@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NovoProjeto.Domain.Interface.Service;
-using System;
+using NovoProjeto.Application.Interfaces;
+using NovoProjeto.Infra.CrossCutting.Util.ViewEntity;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace NovoProjeto.Service.WebAPI.Controllers
@@ -12,25 +12,32 @@ namespace NovoProjeto.Service.WebAPI.Controllers
     [ApiController]
     public class AcoesInvestimentoController : ControllerBase
     {
-        private readonly IFinanceInfraService _financeInfraService;
+        private readonly IAcaoInvestimentoAppService _acaoInvestimentoAppService;
 
-        public AcoesInvestimentoController( IFinanceInfraService financeInfraService )
+        public AcoesInvestimentoController( IAcaoInvestimentoAppService acaoInvestimentoAppService )
         {
-            _financeInfraService = financeInfraService;
+            _acaoInvestimentoAppService = acaoInvestimentoAppService;
         }
 
-        // GET: lista de acoes disponíveis
-        ///<summary>
-        ///</summary>
-        ///<remarks>
-        ///</remarks>
+        /// <summary>
+        /// Consulta uma lista de ações disponíveis para investimento
+        /// </summary>
         [HttpGet]
-        [Route( "listarAcoes" )]
-        public async Task<IActionResult> ListarAcoes()
+        [Route( "listarCotacoes" )]
+        [Produces( "application/json" )]
+        [SwaggerOperation( "Listar Cotações" )]
+        [ProducesResponseType( typeof( List<AcaoDisponivelViewEntity> ), StatusCodes.Status200OK )]
+        [ProducesResponseType( typeof( List<ErroViewEntity> ), StatusCodes.Status400BadRequest )]
+        public async Task<IActionResult> ListarCotacoes()
         {
-            var result = await _financeInfraService.ListarAcoes();
+            var listaCotacoes = await _acaoInvestimentoAppService.ListarAcoesDisponiveis();
 
-            return Ok( result );
+            if( listaCotacoes.TemErros() )
+            {
+                return BadRequest( listaCotacoes.Erros );
+            }
+
+            return Ok( listaCotacoes.AcoesDisponiveis );
         }
     }
 }
