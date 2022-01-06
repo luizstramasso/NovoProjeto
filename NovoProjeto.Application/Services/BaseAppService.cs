@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using NovoProjeto.Application.Interfaces;
-using NovoProjeto.Domain.Interface;
 using NovoProjeto.Domain.Interface.Repository;
 using NovoProjeto.Infra.CrossCutting.Util.ViewEntity;
 using System;

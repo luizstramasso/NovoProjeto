@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NovoProjeto.Infra.CrossCutting.Util.DataEntity
+﻿namespace NovoProjeto.Infra.CrossCutting.Util.DataEntity
 {
     public class AcaoInvestimentoDataEntity
     {

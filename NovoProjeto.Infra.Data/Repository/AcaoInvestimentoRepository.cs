@@ -1,5 +1,4 @@
-﻿using NovoProjeto.Domain.Interface;
-using NovoProjeto.Domain.Interface.Repository;
+﻿using NovoProjeto.Domain.Interface.Repository;
 using NovoProjeto.Domain.Models;
 using NovoProjeto.Infra.Data.Context;
 
