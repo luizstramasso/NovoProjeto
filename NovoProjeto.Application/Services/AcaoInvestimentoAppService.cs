@@ -13,6 +13,7 @@ namespace NovoProjeto.Application.Services
     {
         private readonly IFinanceRequestService _financeInfraService;
 
+
         public AcaoInvestimentoAppService( IMapper mapper, IBaseRepository<AcaoInvestimento> repository, IFinanceRequestService financeInfraService )
             : base( mapper, repository )
         {
@@ -21,7 +22,9 @@ namespace NovoProjeto.Application.Services
 
         public async Task<AcoesDisponiveiRetorno> ListarAcoesDisponiveis()
         {
-            var dataEntity = await _financeInfraService.ListarAcoesDisponiveis();
+
+
+            var dataEntity = await _financeInfraService.ConsultarAcoesYahoo();
 
             var listaAcoes = new List<AcaoDisponivelViewEntity>();
             var listaErros = new List<ErroViewEntity>();
@@ -54,6 +57,5 @@ namespace NovoProjeto.Application.Services
 
             return retorno;
         }
-
     }
 }

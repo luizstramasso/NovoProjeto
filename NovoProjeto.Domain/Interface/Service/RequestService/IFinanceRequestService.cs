@@ -5,6 +5,6 @@ namespace NovoProjeto.Domain.Interface.Service.RequestService
 {
     public interface IFinanceRequestService
     {
-        Task<AcoesDisponiveisServiceEntity> ListarAcoesDisponiveis();
+        Task<AcoesDisponiveisServiceEntity> ConsultarAcoesYahoo();
     }
 }
