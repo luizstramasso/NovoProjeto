@@ -38,7 +38,7 @@ namespace NovoProjeto.Infra.CrossCutting.IoC
             services
                 .AddScoped<IAcaoInvestimentoRepository, AcaoInvestimentoRepository>();
 
-            services.AddDbContext<NovoProjetoContext>( x => x.UseInMemoryDatabase( "BancoEmMemoria" ) );
+            services.AddDbContext<NovoProjetoContext>( x => x.UseSqlServer( "Server=DESKTOP-7T9SAE6\\SQLEXPRESS;Database=NovoProjeto;Trusted_Connection=True;MultipleActiveResultSets=true" ) );
 
             return services;
         }
