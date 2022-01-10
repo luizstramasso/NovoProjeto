@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using NovoProjeto.Application.Interfaces;
 using NovoProjeto.Infra.CrossCutting.Util.ViewEntity;
+using NovoProjeto.Infra.CrossCutting.Util.ViewEntity.Input;
 using Swashbuckle.AspNetCore.Annotations;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -38,6 +40,33 @@ namespace NovoProjeto.Service.WebAPI.Controllers
             }
 
             return Ok( listaCotacoes.AcoesDisponiveis );
+        }
+
+        /// <summary>
+        /// Cadastrar uma nova ação para investimento
+        /// </summary>
+        [HttpPost]
+        [Route( "novaAcao" )]
+        [Produces( "application/json" )]
+        [SwaggerOperation( "Adiciona Nova Acao" )]
+        //[ProducesResponseType( typeof( List<AcaoDisponivelViewEntity> ), StatusCodes.Status200OK )]
+        //[ProducesResponseType( typeof( List<ErroViewEntity> ), StatusCodes.Status400BadRequest )]
+        public async Task<IActionResult> NovaAcaoInvestimento( AcaoInvestimentoInput input )
+        {
+            try
+            {
+                var novaAcao = await _acaoInvestimentoAppService.IncluirNovaAcaoInvestimento( input );
+
+                if( !novaAcao )
+                {
+                    return BadRequest( "erro ao processar a solicitação" );
+                }
+                return Ok( novaAcao );
+            }
+            catch( Exception ex )
+            {
+                return BadRequest( "erro ao processar a solicitação: " + ex.Message );
+            }
         }
     }
 }

@@ -4,6 +4,8 @@ using NovoProjeto.Domain.Interface.Repository;
 using NovoProjeto.Domain.Interface.Service.RequestService;
 using NovoProjeto.Domain.Models;
 using NovoProjeto.Infra.CrossCutting.Util.ViewEntity;
+using NovoProjeto.Infra.CrossCutting.Util.ViewEntity.Input;
+using NovoProjeto.Infra.CrossCutting.Util.ViewEntity.Output;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -20,7 +22,18 @@ namespace NovoProjeto.Application.Services
             _financeInfraService = financeInfraService;
         }
 
-        public async Task<AcoesDisponiveiRetorno> ListarAcoesDisponiveis()
+        public Task<bool> IncluirNovaAcaoInvestimento( AcaoInvestimentoInput input )
+        {
+            var novaAcaoViewEntity = new AcaoInvestimentoViewEntity()
+            {
+                CodigoAcao = input.CodigoAcao,
+                RazaoSocial = input.RazaoSocial
+            };
+
+            return Task.FromResult( base.Incluir( novaAcaoViewEntity ) );
+        }
+
+        public async Task<AcoesDisponiveisOutput> ListarAcoesDisponiveis()
         {
 
 
@@ -28,7 +41,7 @@ namespace NovoProjeto.Application.Services
 
             var listaAcoes = new List<AcaoDisponivelViewEntity>();
             var listaErros = new List<ErroViewEntity>();
-            var retorno = new AcoesDisponiveiRetorno();
+            var retorno = new AcoesDisponiveisOutput();
 
             if( dataEntity.TemErros() )
             {
