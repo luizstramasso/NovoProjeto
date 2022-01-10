@@ -2,11 +2,12 @@
 {
     public class OperacaoInvestimentoViewEntity : BaseViewEntity
     {
-        public string Codigo { get; set; }
+        public string CodigoAcao { get; set; }
         public string RazaoSocial { get; set; }
         public string TipoOperacao { get; set; }
         public double ValorAcao { get; set; }
         public int Quantidade { get; set; }
-        public decimal ValorTotalOperacao { get; set; }
+        public string MoedaCorrente { get; set; }
+        public double ValorTotalOperacao { get; set; }
     }
 }

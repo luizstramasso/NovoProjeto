@@ -1,6 +1,6 @@
 ﻿namespace NovoProjeto.Infra.CrossCutting.Util.ViewEntity
 {
-    public class AcaoDisponivelViewEntity
+    public class AcaoDisponivelViewEntity : BaseViewEntity
     {
         public string RazaoSocial { get; set; }
         public string CodigoAcao { get; set; }
