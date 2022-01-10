@@ -1,6 +1,6 @@
-﻿namespace NovoProjeto.Infra.CrossCutting.Util.ViewEntity
+﻿namespace NovoProjeto.Infra.CrossCutting.Util.DataEntity
 {
-    public class AcaoDisponivelViewEntity : BaseViewEntity
+    public class OperacaoInvestimentoDataEntity
     {
         public string RazaoSocial { get; set; }
         public string CodigoAcao { get; set; }

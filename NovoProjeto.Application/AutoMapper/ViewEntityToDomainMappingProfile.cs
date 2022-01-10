@@ -9,6 +9,7 @@ namespace NovoProjeto.Application.AutoMapper
         public ViewEntityToDomainMappingProfile()
         {
             CreateMap<AcaoInvestimentoViewEntity, AcaoInvestimento>();
+            CreateMap<OperacaoInvestimentoViewEntity, OperacaoInvestimento>();
         }
     }
 }

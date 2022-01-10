@@ -1,6 +1,6 @@
-﻿namespace NovoProjeto.Domain.Models
+﻿namespace NovoProjeto.Infra.CrossCutting.Util.ViewEntity.Input
 {
-    public class AcaoInvestimento : BaseEntity
+    public class AcaoInvestimentoInput
     {
         public string CodigoAcao { get; set; }
         public string RazaoSocial { get; set; }

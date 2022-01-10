@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.OpenApi.Models;
 using NovoProjeto.Infra.CrossCutting.IoC;
+using NovoProjeto.Infra.CrossCutting.Util.HelpEntity.AppSettings;
 using System;
 using System.IO;
 
@@ -13,17 +14,26 @@ namespace NovoProjeto.Service.WebAPI
 {
     public class Startup
     {
-        public Startup( IConfiguration configuration )
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration { get; }
+        public Startup( IWebHostEnvironment environment )
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath( environment.ContentRootPath )
+                .AddJsonFile( "appsettings.json", optional: false, reloadOnChange: true )
+                .AddJsonFile( $"appsettings.{environment.EnvironmentName}.json", optional: true, reloadOnChange: true )
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices( IServiceCollection services )
         {
-            services.NovoProjetoSetup( typeof( Startup ) );
+            services.Configure<Configuration>( Configuration.GetSection( "Configuration" ) );
+
+            var configuration = Configuration.GetSection( "Configuration" ).Get<Configuration>();
+
+            services.NovoProjetoSetup();
             services.AddControllers();
             services.AddSwaggerGen( c =>
             {
