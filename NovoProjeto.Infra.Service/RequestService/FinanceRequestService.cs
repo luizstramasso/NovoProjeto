@@ -5,6 +5,7 @@ using NovoProjeto.Domain.Interface.Service.RequestService;
 using NovoProjeto.Infra.CrossCutting.Util.HelpEntity;
 using NovoProjeto.Infra.CrossCutting.Util.HelpEntity.AppSettings;
 using NovoProjeto.Infra.CrossCutting.Util.ServiceEntity;
+using NovoProjeto.Infra.CrossCutting.Util.ViewEntity.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,10 +31,8 @@ namespace NovoProjeto.Infra.Service.RequestService
         public async Task<AcoesDisponiveisServiceEntity> ConsultarAcoesYahoo()
         {
             var acoesDisponiveis = new AcoesDisponiveisServiceEntity();
-
             var endpoint = new UriBuilder();
-
-            var configuration = _configuration.GetYahooFinanceConfiguration();
+            var configuration = _configuration.BuscarYahooFinance();
 
             endpoint.Scheme = configuration.Schema;
             endpoint.Host = configuration.Host;
@@ -42,7 +41,7 @@ namespace NovoProjeto.Infra.Service.RequestService
             var maxSymbols = configuration.MaxSymbols;
             var symbols = _acaoInvestimentoRepository.Listar().Take( maxSymbols ).ToList();
             var symbolsToQuery = string.Empty;
-            var lastSymbol = symbols.Last();
+            var lastSymbol = symbols.LastOrDefault();
 
             foreach( var symbol in symbols )
             {
@@ -62,9 +61,8 @@ namespace NovoProjeto.Infra.Service.RequestService
             }
 
             endpoint.Query = query;
-            string endpointString = endpoint.ToString();
 
-            var request = new HttpRequestMessage( HttpMethod.Get, endpointString );
+            var request = new HttpRequestMessage( HttpMethod.Get, endpoint.ToString() );
 
             foreach( var header in configuration.Headers )
             {
@@ -115,6 +113,70 @@ namespace NovoProjeto.Infra.Service.RequestService
             }
 
             return acoesDisponiveis;
+        }
+
+        public async Task<double> ConverterMoedaParaReal( string moedaAcao )
+        {
+            var endpoint = new UriBuilder();
+            var configuration = _configuration.BuscarHgFinanceApi();
+            double retornoCotacaoMoeda = 0.0;
+
+            endpoint.Scheme = configuration.Schema;
+            endpoint.Host = configuration.Host;
+            endpoint.Path = configuration.Path;
+            endpoint.Query = configuration.Key;
+
+            var request = new HttpRequestMessage( HttpMethod.Get, endpoint.ToString() );
+
+            var client = _clientFactory.CreateClient();
+
+            try
+            {
+                var response = await client.SendAsync( request );
+
+                if( response.IsSuccessStatusCode )
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var rootObj = JsonConvert.DeserializeObject<ResponseHgFinanaceApiHelpEntity>( responseString );
+                    var cotacaoMoedaAcao = rootObj.Results.Currencies;
+
+                    retornoCotacaoMoeda = cotacaoMoedaAcao.ConversaoParaLista( cotacaoMoedaAcao ).Where( x => x.Codigo == moedaAcao ).Select( x => x.Valor ).FirstOrDefault();
+                }
+            }
+            catch( Exception )
+            {
+                return retornoCotacaoMoeda;
+            }
+
+            return retornoCotacaoMoeda;
+        }
+
+        public double CalculoTotalOperacao( OperacaoInvestimentoInput input, double valorMoedaReal, double precoAcao )
+        {
+            var valoresCalculoOperacao = _configuration.BuscarCalculoOperacao();
+            double custoOperacao = 0.0;
+            double valorOrdem = 0.0;
+            double valorTotalOperacao = 0.0;
+
+            switch( input.TipoOperacao.ToLower() )
+            {
+                case "v":
+                    valorOrdem = ( input.QuantidadeAcoes * precoAcao * valorMoedaReal );
+                    custoOperacao = valoresCalculoOperacao.CustoOperacao + ( valorOrdem * valoresCalculoOperacao.Emolumentos );
+                    valorTotalOperacao = valorOrdem - custoOperacao;
+                    break;
+
+                case "c":
+                    valorOrdem = ( input.QuantidadeAcoes * precoAcao * valorMoedaReal );
+                    custoOperacao = valoresCalculoOperacao.CustoOperacao + ( valorOrdem * valoresCalculoOperacao.Emolumentos );
+                    valorTotalOperacao = valorOrdem + custoOperacao;
+                    break;
+
+                default:
+                    break;
+            }
+
+            return valorTotalOperacao;
         }
     }
 }
