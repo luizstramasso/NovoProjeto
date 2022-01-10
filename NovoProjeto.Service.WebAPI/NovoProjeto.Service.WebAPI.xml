@@ -19,5 +19,10 @@
             Criar uma Operação de investimento.
             </summary>
         </member>
+        <member name="M:NovoProjeto.Service.WebAPI.Controllers.RelatoriosInvestimentoController.RelatorioOperacoesInvestimento(NovoProjeto.Infra.CrossCutting.Util.ViewEntity.Input.Relatorios.RelatorioOperacaoInvestimentoInput)">
+            <summary>
+            Extrai relatório de operações de investimento, de acordo com o filtro enviado.
+            </summary>
+        </member>
     </members>
 </doc>
