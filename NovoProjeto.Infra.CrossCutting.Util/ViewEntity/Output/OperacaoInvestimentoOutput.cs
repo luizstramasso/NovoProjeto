@@ -7,6 +7,7 @@
         public string TipoOperacao { get; set; }
         public double ValorAcao { get; set; }
         public int Quantidade { get; set; }
-        public decimal ValorTotalOperacao { get; set; }
+        public string MoedaOperacao { get; set; }
+        public double ValorTotalOperacao { get; set; }
     }
 }

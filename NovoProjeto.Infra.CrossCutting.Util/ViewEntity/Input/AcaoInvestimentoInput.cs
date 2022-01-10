@@ -1,8 +1,7 @@
 ﻿namespace NovoProjeto.Infra.CrossCutting.Util.ViewEntity.Input
 {
-    public class AcaoInvestimentoInput
+    public class AcaoInvestimentoInput : BaseInvestimentoInput
     {
-        public string CodigoAcao { get; set; }
         public string RazaoSocial { get; set; }
     }
 }
