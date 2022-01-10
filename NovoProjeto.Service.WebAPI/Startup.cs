@@ -33,7 +33,7 @@ namespace NovoProjeto.Service.WebAPI
 
             var configuration = Configuration.GetSection( "Configuration" ).Get<Configuration>();
 
-            services.NovoProjetoSetup( typeof( Startup ) );
+            services.NovoProjetoSetup();
             services.AddControllers();
             services.AddSwaggerGen( c =>
             {

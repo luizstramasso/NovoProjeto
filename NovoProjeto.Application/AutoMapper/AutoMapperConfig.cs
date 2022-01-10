@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace NovoProjeto.Application.AutoMapper
 {
     public static class AutoMapperConfig
     {
-        public static void AddAutoMapperSetup( this IServiceCollection services, Type type )
+        public static void AddAutoMapperSetup( this IServiceCollection services )
         {
-            services.AddAutoMapper( type );
+            services.AddAutoMapper( typeof( DomainToViewEntityMappingProfile ), typeof( ViewEntityToDomainMappingProfile ) );
 
             RegisterMappings();
         }

@@ -10,22 +10,23 @@ using NovoProjeto.Infra.CrossCutting.Util.ViewEntity;
 using NovoProjeto.Infra.Data.Context;
 using NovoProjeto.Infra.Data.Repository;
 using NovoProjeto.Infra.Service.RequestService;
-using System;
 
 namespace NovoProjeto.Infra.CrossCutting.IoC
 {
     public static class IServiceCollectionExtension
     {
-        public static IServiceCollection NovoProjetoSetup( this IServiceCollection services, Type type )
+        public static IServiceCollection NovoProjetoSetup( this IServiceCollection services )
         {
             // Application
             services
-                .AddScoped<IBaseAppService<AcaoInvestimentoViewEntity>, BaseAppService<AcaoInvestimento, AcaoInvestimentoViewEntity>>();
+                .AddScoped<IBaseAppService<AcaoInvestimentoViewEntity>, BaseAppService<AcaoInvestimento, AcaoInvestimentoViewEntity>>()
+                .AddScoped<IBaseAppService<OperacaoInvestimentoViewEntity>, BaseAppService<OperacaoInvestimento, OperacaoInvestimentoViewEntity>>();
 
             services
-                .AddScoped<IAcaoInvestimentoAppService, AcaoInvestimentoAppService>();
+                .AddScoped<IAcaoInvestimentoAppService, AcaoInvestimentoAppService>()
+                .AddScoped<IOperacaoInvestimentoAppService, OperacaoInvestimentoAppService>();
 
-            services.AddAutoMapperSetup( type );
+            services.AddAutoMapperSetup();
 
             // Infra - Service
             services.AddHttpClient();
@@ -33,10 +34,12 @@ namespace NovoProjeto.Infra.CrossCutting.IoC
 
             // Infra - Data
             services
-                .AddScoped<IBaseRepository<AcaoInvestimento>, BaseRepository<AcaoInvestimento>>();
+                .AddScoped<IBaseRepository<AcaoInvestimento>, BaseRepository<AcaoInvestimento>>()
+                .AddScoped<IBaseRepository<OperacaoInvestimento>, BaseRepository<OperacaoInvestimento>>();
 
             services
-                .AddScoped<IAcaoInvestimentoRepository, AcaoInvestimentoRepository>();
+                .AddScoped<IAcaoInvestimentoRepository, AcaoInvestimentoRepository>()
+                .AddScoped<IOperacaoInvestimentoRepository, OperacaoInvestimentoRepository>();
 
             services.AddDbContext<NovoProjetoContext>( x => x.UseSqlServer( "Server=DESKTOP-7T9SAE6\\SQLEXPRESS;Database=NovoProjeto;Trusted_Connection=True;MultipleActiveResultSets=true" ) );
 
