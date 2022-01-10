@@ -9,5 +9,15 @@
             Consulta uma lista de ações disponíveis para investimento
             </summary>
         </member>
+        <member name="M:NovoProjeto.Service.WebAPI.Controllers.AcoesInvestimentoController.NovaAcaoInvestimento(NovoProjeto.Infra.CrossCutting.Util.ViewEntity.Input.AcaoInvestimentoInput)">
+            <summary>
+            Cadastrar uma nova ação para investimento
+            </summary>
+        </member>
+        <member name="M:NovoProjeto.Service.WebAPI.Controllers.OperacaoInvestimentoController.NovaOperacaoInvestimento(NovoProjeto.Infra.CrossCutting.Util.ViewEntity.Input.OperacaoInvestimentoInput)">
+            <summary>
+            Criar uma Operação de investimento.
+            </summary>
+        </member>
     </members>
 </doc>
