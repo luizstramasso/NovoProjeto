@@ -2,6 +2,7 @@
 {
     public class ExternalRequestUrl
     {
+        public HgFinanceApi HgFinanceApi { get; set; }
         public YahooFinance YahooFinance { get; set; }
     }
 }

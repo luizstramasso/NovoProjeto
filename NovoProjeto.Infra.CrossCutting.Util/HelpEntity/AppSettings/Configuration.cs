@@ -8,6 +8,11 @@
 
         public string AllowedHosts { get; set; }
 
-        public YahooFinance GetYahooFinanceConfiguration() => ExternalRequestUrl?.YahooFinance;
+        public InternalVariables InternalVariables { get; set; }
+
+
+        public HgFinanceApi BuscarHgFinanceApi() => ExternalRequestUrl?.HgFinanceApi;
+        public YahooFinance BuscarYahooFinance() => ExternalRequestUrl?.YahooFinance;
+        public CalculoOperacao BuscarCalculoOperacao() => InternalVariables?.CalculoOperacao;
     }
 }
