@@ -20,11 +20,13 @@ namespace NovoProjeto.Infra.CrossCutting.IoC
             // Application
             services
                 .AddScoped<IBaseAppService<AcaoInvestimentoViewEntity>, BaseAppService<AcaoInvestimento, AcaoInvestimentoViewEntity>>()
-                .AddScoped<IBaseAppService<OperacaoInvestimentoViewEntity>, BaseAppService<OperacaoInvestimento, OperacaoInvestimentoViewEntity>>();
+                .AddScoped<IBaseAppService<OperacaoInvestimentoViewEntity>, BaseAppService<OperacaoInvestimento, OperacaoInvestimentoViewEntity>>()
+                .AddScoped<IBaseAppService<RelatorioOperacaoInvestimentoViewEntity>, BaseAppService<OperacaoInvestimento, RelatorioOperacaoInvestimentoViewEntity>>();
 
             services
                 .AddScoped<IAcaoInvestimentoAppService, AcaoInvestimentoAppService>()
-                .AddScoped<IOperacaoInvestimentoAppService, OperacaoInvestimentoAppService>();
+                .AddScoped<IOperacaoInvestimentoAppService, OperacaoInvestimentoAppService>()
+                .AddScoped<IRelatorioOperacaoInvestimentoAppService, RelatorioOperacaoInvestimentoAppService>();
 
             services.AddAutoMapperSetup();
 

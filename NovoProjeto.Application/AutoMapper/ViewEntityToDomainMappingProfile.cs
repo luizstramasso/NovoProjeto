@@ -10,6 +10,7 @@ namespace NovoProjeto.Application.AutoMapper
         {
             CreateMap<AcaoInvestimentoViewEntity, AcaoInvestimento>();
             CreateMap<OperacaoInvestimentoViewEntity, OperacaoInvestimento>();
+            CreateMap<RelatorioOperacaoInvestimentoViewEntity, OperacaoInvestimento>();
         }
     }
 }
