@@ -10,13 +10,13 @@ namespace NovoProjeto.Infra.Data.Context
         {
             return new List<AcaoInvestimento>()
             {
-                new AcaoInvestimento() { ID = Guid.NewGuid(), RazaoSocial = "Apple Inc.", CodigoAcao = "AAPL" },
-                new AcaoInvestimento() { ID = Guid.NewGuid(), RazaoSocial = "Amazon.com, Inc.", CodigoAcao = "AMZN" },
-                new AcaoInvestimento() { ID = Guid.NewGuid(), RazaoSocial = "Alphabet Inc.", CodigoAcao = "GOOG" },
-                new AcaoInvestimento() { ID = Guid.NewGuid(), RazaoSocial = "Meta Platforms, Inc.", CodigoAcao = "FB" },
-                new AcaoInvestimento() { ID = Guid.NewGuid(), RazaoSocial = "Tesla, Inc.", CodigoAcao = "TSLA" },
-                new AcaoInvestimento() { ID = Guid.NewGuid(), RazaoSocial = "Netflix Inc.", CodigoAcao = "NFLX" },
-                new AcaoInvestimento() { ID = Guid.NewGuid(), RazaoSocial = "International Business Machines Corporation", CodigoAcao = "IBM" }
+                new AcaoInvestimento() { ID = Guid.NewGuid(), Validacao = true, RazaoSocial = "Apple Inc.", CodigoAcao = "AAPL" },
+                new AcaoInvestimento() { ID = Guid.NewGuid(), Validacao = true, RazaoSocial = "Amazon.com, Inc.", CodigoAcao = "AMZN" },
+                new AcaoInvestimento() { ID = Guid.NewGuid(), Validacao = true, RazaoSocial = "Alphabet Inc.", CodigoAcao = "GOOG" },
+                new AcaoInvestimento() { ID = Guid.NewGuid(), Validacao = true, RazaoSocial = "Meta Platforms, Inc.", CodigoAcao = "FB" },
+                new AcaoInvestimento() { ID = Guid.NewGuid(), Validacao = true, RazaoSocial = "Tesla, Inc.", CodigoAcao = "TSLA" },
+                new AcaoInvestimento() { ID = Guid.NewGuid(), Validacao = true, RazaoSocial = "Netflix Inc.", CodigoAcao = "NFLX" },
+                new AcaoInvestimento() { ID = Guid.NewGuid(), Validacao = true, RazaoSocial = "International Business Machines Corporation", CodigoAcao = "IBM" }
             };
         }
     }

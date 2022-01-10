@@ -10,8 +10,8 @@ using NovoProjeto.Infra.Data.Context;
 namespace NovoProjeto.Infra.Data.Migrations
 {
     [DbContext(typeof(NovoProjetoContext))]
-    [Migration("20220106213044_Inicial")]
-    partial class Inicial
+    [Migration("20220110155344_ValidacaoTrue")]
+    partial class ValidacaoTrue
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,7 +26,7 @@ namespace NovoProjeto.Infra.Data.Migrations
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasDefaultValue(new Guid("715b8039-667c-4366-9f8b-34fc5dd965bb"))
+                        .HasDefaultValue(new Guid("09efbfa4-27aa-45ae-b118-f7d43ad39c56"))
                         .HasColumnName("ACAO_INVESTIMENTO_ID");
 
                     b.Property<string>("CodigoAcao")
@@ -41,7 +41,7 @@ namespace NovoProjeto.Infra.Data.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 1, 6, 18, 30, 44, 149, DateTimeKind.Local).AddTicks(6497))
+                        .HasDefaultValue(new DateTime(2022, 1, 10, 12, 53, 44, 93, DateTimeKind.Local).AddTicks(1467))
                         .HasColumnName("DATA_INCLUSAO");
 
                     b.Property<string>("RazaoSocial")
@@ -60,59 +60,59 @@ namespace NovoProjeto.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("23dc4f1d-e629-401b-88e5-c318c39d088c"),
+                            ID = new Guid("9dfeb225-bcd5-484b-93ac-9a6ac89ec9b8"),
                             CodigoAcao = "AAPL",
                             DataInclusao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RazaoSocial = "Apple Inc.",
-                            Validacao = false
+                            Validacao = true
                         },
                         new
                         {
-                            ID = new Guid("587577d8-9536-42e7-8812-6ec57709ddc8"),
+                            ID = new Guid("ea276203-7052-4460-b311-1fcdc92b7f5b"),
                             CodigoAcao = "AMZN",
                             DataInclusao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RazaoSocial = "Amazon.com, Inc.",
-                            Validacao = false
+                            Validacao = true
                         },
                         new
                         {
-                            ID = new Guid("21681a43-4dec-4f8d-888d-c23b4c9dae66"),
+                            ID = new Guid("eba9ddf2-1301-47b5-9068-7837b63641a8"),
                             CodigoAcao = "GOOG",
                             DataInclusao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RazaoSocial = "Alphabet Inc.",
-                            Validacao = false
+                            Validacao = true
                         },
                         new
                         {
-                            ID = new Guid("f3fce418-7b32-4349-aa40-1a8a7aac94a1"),
+                            ID = new Guid("e4c00ff7-047a-4352-9422-518f04345de2"),
                             CodigoAcao = "FB",
                             DataInclusao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RazaoSocial = "Meta Platforms, Inc.",
-                            Validacao = false
+                            Validacao = true
                         },
                         new
                         {
-                            ID = new Guid("a60019f0-03d9-4a24-9067-e30fedaed429"),
+                            ID = new Guid("e4421514-4cd2-4fe5-be26-60ce02465783"),
                             CodigoAcao = "TSLA",
                             DataInclusao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RazaoSocial = "Tesla, Inc.",
-                            Validacao = false
+                            Validacao = true
                         },
                         new
                         {
-                            ID = new Guid("6f024bc4-1a16-4e05-8a23-5732d66b0d9d"),
+                            ID = new Guid("f0cd6974-2906-41b6-b635-aa7c0137ada3"),
                             CodigoAcao = "NFLX",
                             DataInclusao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RazaoSocial = "Netflix Inc.",
-                            Validacao = false
+                            Validacao = true
                         },
                         new
                         {
-                            ID = new Guid("dfc9d16a-3321-46e3-9188-5f4a13508a9d"),
+                            ID = new Guid("3ce34685-39c6-4da2-8d6f-ebbf525c7b17"),
                             CodigoAcao = "IBM",
                             DataInclusao = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RazaoSocial = "International Business Machines Corporation",
-                            Validacao = false
+                            Validacao = true
                         });
                 });
 
@@ -121,7 +121,7 @@ namespace NovoProjeto.Infra.Data.Migrations
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasDefaultValue(new Guid("bca2cc03-0613-4d01-9b12-dbb12ec95126"))
+                        .HasDefaultValue(new Guid("262eb2f2-fb94-4414-92fb-6f955aeb5021"))
                         .HasColumnName("ACAO_INVESTIMENTO_ID");
 
                     b.Property<string>("CodigoAcao")
@@ -136,7 +136,7 @@ namespace NovoProjeto.Infra.Data.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 1, 6, 18, 30, 44, 185, DateTimeKind.Local).AddTicks(7648))
+                        .HasDefaultValue(new DateTime(2022, 1, 10, 12, 53, 44, 104, DateTimeKind.Local).AddTicks(864))
                         .HasColumnName("DATA_INCLUSAO");
 
                     b.Property<int>("Quantidade")
@@ -157,12 +157,12 @@ namespace NovoProjeto.Infra.Data.Migrations
                         .HasColumnType("bit")
                         .HasColumnName("VALIDACAO");
 
-                    b.Property<decimal>("ValorAcao")
-                        .HasColumnType("decimal(18,2)")
+                    b.Property<double>("ValorAcao")
+                        .HasColumnType("float")
                         .HasColumnName("VALOR_ACAO");
 
-                    b.Property<decimal>("ValorTotalOperacao")
-                        .HasColumnType("decimal(18,2)")
+                    b.Property<double>("ValorTotalOperacao")
+                        .HasColumnType("float")
                         .HasColumnName("VALOR_TOTAL_OPERACAO");
 
                     b.HasKey("ID");
