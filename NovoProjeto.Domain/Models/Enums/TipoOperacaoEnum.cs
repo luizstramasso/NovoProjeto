@@ -2,7 +2,7 @@
 {
     public enum TipoOperacaoEnum
     {
-        Compra = 1,
-        Venda = 2
+        C = 1,
+        V = 2
     }
 }

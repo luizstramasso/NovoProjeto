@@ -1,6 +1,4 @@
-﻿using NovoProjeto.Domain.Models.Enums;
-
-namespace NovoProjeto.Domain.Models
+﻿namespace NovoProjeto.Domain.Models
 {
     public class AcaoInvestimento : BaseEntity
     {
