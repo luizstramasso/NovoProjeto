@@ -27,6 +27,7 @@ namespace NovoProjeto.Application.Services
             }
 
             entity.DataInclusao = DateTime.Now;
+            entity.Validacao = true;
 
             _repository.Incluir( _mapper.Map<TEntity>( entity ) );
 
